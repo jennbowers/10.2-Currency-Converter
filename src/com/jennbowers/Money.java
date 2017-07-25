@@ -2,6 +2,7 @@ package com.jennbowers;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  * Created by jenniferbowers on 7/25/17.
@@ -19,10 +20,17 @@ public class Money {
         return currencySymbol;
     }
 
+    private void setCurrencySymbol(String currencySymbol) {
+        this.currencySymbol = currencySymbol;
+    }
+
     public double getAmount() {
         return amount;
     }
 
+    private void setAmount(double amount) {
+        this.amount = amount;
+    }
 
     //    FOR DECIMAL ROUNDING
 //    http://www.baeldung.com/java-round-decimal-number
@@ -80,6 +88,47 @@ public class Money {
         tempSolution = this.getAmount() / 2550.69;
         System.out.println("BTC to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
+    }
+
+//    Let's try a one step converter...
+    public double currencyConverter(String desiredCurrency) {
+        Scanner scanner = new Scanner (System.in);
+
+        System.out.println("Hi! Welcome to currency converter! Which currency would you like to convert from: USD? JPY? BTC? EUR?");
+        String userInputCurrency = scanner.nextLine();
+
+        System.out.println("And what is the amount of money you would like to convert?");
+
+
+        String currentCurrency = this.getCurrencySymbol();
+        Double finalResult = 0.0;
+        switch(currentCurrency) {
+            case "USD":
+                break;
+            case "JPY":
+                 this.setAmount(yenToDollars());
+                break;
+            case "EUR":
+                this.setAmount(euroToDollars());
+                break;
+            case "BTC":
+                this.setAmount(bitcoinToDollars());
+                break;
+        }
+        switch(desiredCurrency){
+            case "USD":
+                break;
+            case "JPY":
+                finalResult = dollarsToYen();
+                break;
+            case "EUR":
+                finalResult = dollarsToEuros();
+                break;
+            case "BTC":
+                finalResult = dollarsToBitcoin();
+                break;
+        }
+        return finalResult;
     }
 
 }
