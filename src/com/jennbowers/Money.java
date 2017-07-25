@@ -49,21 +49,21 @@ public class Money {
 //    convert from JPY to USD
     public double yenToDollars() {
         tempSolution = this.getAmount() * 0.00896261;
-        System.out.println("JPY to USD: " + roundedResult(tempSolution));
+//        System.out.println("JPY to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
     //    convert from EUR to USD
     public double euroToDollars() {
         tempSolution = this.getAmount() * 1.16574;
-        System.out.println("EUR to USD: " + roundedResult(tempSolution));
+//        System.out.println("EUR to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
     //    convert from BTC to USD
     public double bitcoinToDollars() {
         tempSolution = this.getAmount() * 2550.69;
-        System.out.println("BTC to USD: " + roundedResult(tempSolution));
+//        System.out.println("BTC to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
@@ -72,34 +72,30 @@ public class Money {
 //    convert from USD to JPY
     public double dollarsToYen() {
         tempSolution = this.getAmount() / 0.00896261;
-        System.out.println("USD to JPY: " + roundedResult(tempSolution));
+//        System.out.println("USD to JPY: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
     //    convert from USD to EUR
     public double dollarsToEuros() {
         tempSolution = this.getAmount() / 1.16574;
-        System.out.println("EUR to USD: " + roundedResult(tempSolution));
+//        System.out.println("EUR to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
     //    convert from BTC to USD
     public double dollarsToBitcoin() {
         tempSolution = this.getAmount() / 2550.69;
-        System.out.println("BTC to USD: " + roundedResult(tempSolution));
+//        System.out.println("BTC to USD: " + roundedResult(tempSolution));
         return roundedResult(tempSolution);
     }
 
-//    Let's try a one step converter...
+
+
+
+
+//    ----------- Let's try a one step converter with user input...
     public double currencyConverter(String desiredCurrency) {
-        Scanner scanner = new Scanner (System.in);
-
-        System.out.println("Hi! Welcome to currency converter! Which currency would you like to convert from: USD? JPY? BTC? EUR?");
-        String userInputCurrency = scanner.nextLine();
-
-        System.out.println("And what is the amount of money you would like to convert?");
-
-
         String currentCurrency = this.getCurrencySymbol();
         Double finalResult = 0.0;
         switch(currentCurrency) {
