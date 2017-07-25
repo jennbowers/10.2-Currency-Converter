@@ -38,7 +38,7 @@ public class Money {
 
     private double roundedResult (double tempSolution) {
         DecimalFormat roundedConversion = new DecimalFormat("#.##");
-        roundedConversion.setRoundingMode(RoundingMode.CEILING);
+        roundedConversion.setRoundingMode(RoundingMode.HALF_UP);
         double result = Double.parseDouble(roundedConversion.format(tempSolution));
         return result;
     }
@@ -50,21 +50,21 @@ public class Money {
     public double yenToDollars() {
         tempSolution = this.getAmount() * 0.00896261;
 //        System.out.println("JPY to USD: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
 
     //    convert from EUR to USD
     public double euroToDollars() {
         tempSolution = this.getAmount() * 1.16574;
 //        System.out.println("EUR to USD: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
 
     //    convert from BTC to USD
     public double bitcoinToDollars() {
         tempSolution = this.getAmount() * 2550.69;
 //        System.out.println("BTC to USD: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
 
 //    -------CONVERTING USD TO EVERYTHING NEXT
@@ -73,24 +73,22 @@ public class Money {
     public double dollarsToYen() {
         tempSolution = this.getAmount() / 0.00896261;
 //        System.out.println("USD to JPY: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
 
     //    convert from USD to EUR
     public double dollarsToEuros() {
         tempSolution = this.getAmount() / 1.16574;
 //        System.out.println("EUR to USD: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
 
     //    convert from BTC to USD
     public double dollarsToBitcoin() {
         tempSolution = this.getAmount() / 2550.69;
 //        System.out.println("BTC to USD: " + roundedResult(tempSolution));
-        return roundedResult(tempSolution);
+        return tempSolution;
     }
-
-
 
 
 
@@ -113,6 +111,7 @@ public class Money {
         }
         switch(desiredCurrency){
             case "USD":
+                finalResult = this.getAmount();
                 break;
             case "JPY":
                 finalResult = dollarsToYen();
@@ -124,7 +123,8 @@ public class Money {
                 finalResult = dollarsToBitcoin();
                 break;
         }
-        return finalResult;
+        System.out.println(roundedResult(finalResult));
+        return roundedResult(finalResult);
     }
 
 }
