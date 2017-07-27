@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Money {
     private String currencySymbol;
     private double amount;
+    private double amountInDollars;
 
     public Money(String currencySymbol, double amount) {
         this.currencySymbol = currencySymbol;
@@ -30,6 +31,14 @@ public class Money {
 
     private void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getAmountInDollars() {
+        return amountInDollars;
+    }
+
+    public void setAmountInDollars(double amountInDollars) {
+        this.amountInDollars = amountInDollars;
     }
 
     //    FOR DECIMAL ROUNDING
@@ -98,20 +107,21 @@ public class Money {
         Double finalResult = 0.0;
         switch(currentCurrency) {
             case "USD":
+                this.setAmountInDollars(this.getAmount());
                 break;
             case "JPY":
-                 this.setAmount(yenToDollars());
+                 this.setAmountInDollars(yenToDollars());
                 break;
             case "EUR":
-                this.setAmount(euroToDollars());
+                this.setAmountInDollars(euroToDollars());
                 break;
             case "BTC":
-                this.setAmount(bitcoinToDollars());
+                this.setAmountInDollars(bitcoinToDollars());
                 break;
         }
         switch(desiredCurrency){
             case "USD":
-                finalResult = this.getAmount();
+                finalResult = this.getAmountInDollars();
                 break;
             case "JPY":
                 finalResult = dollarsToYen();
