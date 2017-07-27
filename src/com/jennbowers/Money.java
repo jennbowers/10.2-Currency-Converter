@@ -51,53 +51,6 @@ public class Money {
         return result;
     }
 
-
-//    -------CONVERTING EVERYTHING TO USD FIRST
-
-//    convert from JPY to USD
-//    public double yenToDollars() {
-//        tempSolution = this.getAmount() * 0.00896261;
-//        System.out.println("JPY to USD: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
-    //    convert from EUR to USD
-//    public double euroToDollars() {
-//        tempSolution = this.getAmount() * 1.16574;
-//        System.out.println("EUR to USD: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
-    //    convert from BTC to USD
-//    public double bitcoinToDollars() {
-//        tempSolution = this.getAmount() * 2550.69;
-//        System.out.println("BTC to USD: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
-//    -------CONVERTING USD TO EVERYTHING NEXT
-
-//    convert from USD to JPY
-//    public double dollarsToYen() {
-//        tempSolution = this.getAmountInDollars() / 0.00896261;
-//        System.out.println("USD to JPY: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
-    //    convert from USD to EUR
-//    public double dollarsToEuros() {
-//        tempSolution = this.getAmountInDollars() / 1.16574;
-//        System.out.println("USD to EUR: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
-    //    convert from USD to BTC
-//    public double dollarsToBitcoin() {
-//        tempSolution = this.getAmountInDollars() / 2550.69;
-//        System.out.println("USD to BTC: " + roundedResult(tempSolution));
-//        return tempSolution;
-//    }
-
 //    ----------- Now let's try a one method to USD converter that can be re-used
 
     public double toDollarsConverter() {
