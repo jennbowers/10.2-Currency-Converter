@@ -41,7 +41,7 @@ public class Money {
         this.amountInDollars = amountInDollars;
     }
 
-    //    FOR DECIMAL ROUNDING
+//    ---------- FOR DECIMAL ROUNDING
 //    http://www.baeldung.com/java-round-decimal-number
 
     private double roundedResult (double tempSolution) {
@@ -52,7 +52,6 @@ public class Money {
     }
 
 //    ----------- Now let's try a one method to USD converter that can be re-used
-
     public double toDollarsConverter() {
         double tempSolution;
         String currentCurrency = this.getCurrencySymbol();
@@ -77,7 +76,7 @@ public class Money {
     }
 
 
-//    ----------- Let's try a one step converter with user input...
+//    ----------- Let's try a one method converter with user input...
     public double currencyConverter(String desiredCurrency) {
         Double finalResult = 0.0;
         this.toDollarsConverter();
@@ -99,13 +98,28 @@ public class Money {
         return roundedResult(finalResult);
     }
 
-    public boolean isGreaterThan() {
-        System.out.println(this.getAmountInDollars());
-        return true;
+//    ------------ HARDER MODE—comparing currencies
+
+    public boolean isGreaterThan(String currency, double amount) {
+        double firstMoney = this.toDollarsConverter();
+        Money otherMoney = new Money(currency, amount);
+        double secondMoney = otherMoney.toDollarsConverter();
+        if (firstMoney > secondMoney){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isLessThan(String currency, double amount) {
+        double firstMoney = this.toDollarsConverter();
+        Money otherMoney = new Money(currency, amount);
+        double secondMoney = otherMoney.toDollarsConverter();
+        if (firstMoney < secondMoney){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
-
-
-//    implement an `boolean isGreaterThan(Money otherMoney)` instance method on your money class. That way i can have like a money that is 5 EUR and it will be able to compare itself to another money object through the `isGreaterThan` method.
-//        so it’d look like this `boolean moreMoney = new Money(5, 'EUR').isGreaterThan(new Money(10, 'USD'))` would set `moreMoney` to false.

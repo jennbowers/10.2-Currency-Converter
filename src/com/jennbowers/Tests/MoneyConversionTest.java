@@ -64,9 +64,18 @@ public class MoneyConversionTest {
 //    ---------TESTING ISGREATERTHAN boolean
     @Test
     public void testingIsGreaterThan() {
-        Money testMoney = new Money("EUR", 5);
-        boolean result = testMoney.isGreaterThan();
+        Money testMoney = new Money("BTC", 5);
+        boolean result = testMoney.isGreaterThan("USD", 100);
+        System.out.println(result);
         assertEquals(true, result);
+    }
+
+    @Test
+    public void testingIsLessThan() {
+        Money testMoney = new Money("BTC", 5);
+        boolean result = testMoney.isLessThan("USD", 100);
+        System.out.println(result);
+        assertEquals(false, result);
     }
 
 
