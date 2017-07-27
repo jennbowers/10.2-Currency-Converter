@@ -43,7 +43,6 @@ public class Money {
 
     //    FOR DECIMAL ROUNDING
 //    http://www.baeldung.com/java-round-decimal-number
-    private double tempSolution;
 
     private double roundedResult (double tempSolution) {
         DecimalFormat roundedConversion = new DecimalFormat("#.##");
@@ -56,84 +55,91 @@ public class Money {
 //    -------CONVERTING EVERYTHING TO USD FIRST
 
 //    convert from JPY to USD
-    public double yenToDollars() {
-        tempSolution = this.getAmount() * 0.00896261;
+//    public double yenToDollars() {
+//        tempSolution = this.getAmount() * 0.00896261;
 //        System.out.println("JPY to USD: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
     //    convert from EUR to USD
-    public double euroToDollars() {
-        tempSolution = this.getAmount() * 1.16574;
+//    public double euroToDollars() {
+//        tempSolution = this.getAmount() * 1.16574;
 //        System.out.println("EUR to USD: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
     //    convert from BTC to USD
-    public double bitcoinToDollars() {
-        tempSolution = this.getAmount() * 2550.69;
+//    public double bitcoinToDollars() {
+//        tempSolution = this.getAmount() * 2550.69;
 //        System.out.println("BTC to USD: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
 //    -------CONVERTING USD TO EVERYTHING NEXT
 
 //    convert from USD to JPY
-    public double dollarsToYen() {
-        tempSolution = this.getAmount() / 0.00896261;
+//    public double dollarsToYen() {
+//        tempSolution = this.getAmountInDollars() / 0.00896261;
 //        System.out.println("USD to JPY: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
     //    convert from USD to EUR
-    public double dollarsToEuros() {
-        tempSolution = this.getAmount() / 1.16574;
+//    public double dollarsToEuros() {
+//        tempSolution = this.getAmountInDollars() / 1.16574;
 //        System.out.println("USD to EUR: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
     //    convert from USD to BTC
-    public double dollarsToBitcoin() {
-        tempSolution = this.getAmount() / 2550.69;
+//    public double dollarsToBitcoin() {
+//        tempSolution = this.getAmountInDollars() / 2550.69;
 //        System.out.println("USD to BTC: " + roundedResult(tempSolution));
-        return tempSolution;
-    }
+//        return tempSolution;
+//    }
 
 //    ----------- Now let's try a one method to USD converter that can be re-used
 
-
-
-
-//    ----------- Let's try a one step converter with user input...
-    public double currencyConverter(String desiredCurrency) {
+    public double toDollarsConverter() {
+        double tempSolution;
         String currentCurrency = this.getCurrencySymbol();
-        Double finalResult = 0.0;
         switch(currentCurrency) {
             case "USD":
                 this.setAmountInDollars(this.getAmount());
                 break;
             case "JPY":
-                 this.setAmountInDollars(yenToDollars());
+                tempSolution = this.getAmount() * 0.00896261;
+                this.setAmountInDollars(tempSolution);
                 break;
             case "EUR":
-                this.setAmountInDollars(euroToDollars());
+                tempSolution = this.getAmount() * 1.16574;
+                this.setAmountInDollars(tempSolution);
                 break;
             case "BTC":
-                this.setAmountInDollars(bitcoinToDollars());
+                tempSolution = this.getAmount() * 2550.69;
+                this.setAmountInDollars(tempSolution);
                 break;
         }
+        return this.getAmountInDollars();
+    }
+
+
+//    ----------- Let's try a one step converter with user input...
+    public double currencyConverter(String desiredCurrency) {
+        Double finalResult = 0.0;
+        this.toDollarsConverter();
         switch(desiredCurrency){
             case "USD":
                 finalResult = this.getAmountInDollars();
                 break;
             case "JPY":
-                finalResult = dollarsToYen();
+                finalResult = this.getAmountInDollars() / 0.00896261;
                 break;
             case "EUR":
-                finalResult = dollarsToEuros();
+                finalResult = this.getAmountInDollars() / 1.16574;
                 break;
             case "BTC":
-                finalResult = dollarsToBitcoin();
+                finalResult = this.getAmountInDollars() / 2550.69;
                 break;
         }
         System.out.println(roundedResult(finalResult));

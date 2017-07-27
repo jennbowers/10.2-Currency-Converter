@@ -18,14 +18,14 @@ public class MoneyConversionTest {
     @Test
     public void testingYenToDollars() {
         Money newYen = new Money("JPY", 100);
-        double result = newYen.yenToDollars();
+        double result = newYen.toDollarsConverter();
         assertEquals(0.90, result, 0.01);
     }
 
     @Test
     public void testingEurosToDollars() {
         Money newEuro = new Money("EUR", 100);
-        double result = newEuro.euroToDollars();
+        double result = newEuro.toDollarsConverter();
         assertEquals(116.58, result, 0.01);
 
     }
@@ -33,9 +33,11 @@ public class MoneyConversionTest {
     @Test
     public void testingBitcoinToDollars() {
         Money newBitcoin = new Money("BTC", 100);
-        double result = newBitcoin.bitcoinToDollars();
+        double result = newBitcoin.toDollarsConverter();
         assertEquals(255069, result, 0.01);
     }
+
+
 
 //    ----------TESTING CONVERTING FROM USD TO OTHER CURRENCIES
 
@@ -43,19 +45,19 @@ public class MoneyConversionTest {
 
     @Test
     public void testingDollarsToYen() {
-        double result = newDollars.dollarsToYen();
-        assertEquals(11157.47, result, 0.01);
+        double result = newDollars.currencyConverter("JPY");
+        assertEquals(11157.46, result, 0.01);
     }
 
     @Test
     public void testingDollarsToEuros() {
-        double result = newDollars.dollarsToEuros();
-        assertEquals(85.79, result, 0.01);
+        double result = newDollars.currencyConverter("EUR");
+        assertEquals(85.78, result, 0.01);
     }
 
     @Test
     public void testingDollarsToBitcoin() {
-        double result = newDollars.dollarsToBitcoin();
+        double result = newDollars.currencyConverter("BTC");
         assertEquals(0.04, result, 0.01);
     }
 
