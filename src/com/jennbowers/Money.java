@@ -88,16 +88,19 @@ public class Money {
     //    convert from USD to EUR
     public double dollarsToEuros() {
         tempSolution = this.getAmount() / 1.16574;
-//        System.out.println("EUR to USD: " + roundedResult(tempSolution));
+//        System.out.println("USD to EUR: " + roundedResult(tempSolution));
         return tempSolution;
     }
 
-    //    convert from BTC to USD
+    //    convert from USD to BTC
     public double dollarsToBitcoin() {
         tempSolution = this.getAmount() / 2550.69;
-//        System.out.println("BTC to USD: " + roundedResult(tempSolution));
+//        System.out.println("USD to BTC: " + roundedResult(tempSolution));
         return tempSolution;
     }
+
+//    ----------- Now let's try a one method to USD converter that can be re-used
+
 
 
 
@@ -137,4 +140,13 @@ public class Money {
         return roundedResult(finalResult);
     }
 
+    public boolean isGreaterThan() {
+        System.out.println(this.getAmountInDollars());
+        return true;
+    }
+
 }
+
+
+//    implement an `boolean isGreaterThan(Money otherMoney)` instance method on your money class. That way i can have like a money that is 5 EUR and it will be able to compare itself to another money object through the `isGreaterThan` method.
+//        so it’d look like this `boolean moreMoney = new Money(5, 'EUR').isGreaterThan(new Money(10, 'USD'))` would set `moreMoney` to false.

@@ -59,5 +59,13 @@ public class MoneyConversionTest {
         assertEquals(0.04, result, 0.01);
     }
 
+//    ---------TESTING ISGREATERTHAN boolean
+    @Test
+    public void testingIsGreaterThan() {
+        Money testMoney = new Money("EUR", 5);
+        boolean result = testMoney.isGreaterThan();
+        assertEquals(true, result);
+    }
+
 
 }
